@@ -1,0 +1,16 @@
+machine:
+  java:
+    version: oraclejdk8
+
+dependencies:
+  cache_directories:
+    - ~/.m2
+    - ~/.ivy2
+    - ~/.sbt
+
+  override:
+    - "sbt update"
+
+test:
+  override:
+    - "sbt test"

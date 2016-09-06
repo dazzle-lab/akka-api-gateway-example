@@ -8,7 +8,6 @@ ScalariformKeys.preferences := ScalariformKeys.preferences.value
   .setPreference(AlignParameters, true)
   .setPreference(AlignSingleLineCaseStatements, true)
   .setPreference(DoubleIndentClassDeclaration, true)
-  .setPreference(PreserveDanglingCloseParenthesis, true)
 
 name := "akka-api-gateway-example"
 
@@ -21,16 +20,17 @@ organization := "jp.co.dzl"
 resolvers += Resolver.bintrayRepo("hseeberger", "maven")
 
 libraryDependencies ++= Seq(
-  "com.typesafe.akka" %% "akka-http-experimental"      % "2.4.8",
-  "com.typesafe.akka" %% "akka-stream"                 % "2.4.8",
-  "io.circe"          %% "circe-generic"               % "0.4.1",
-  "io.circe"          %% "circe-parser"                % "0.4.1",
-  "de.heikoseeberger" %% "akka-http-circe"             % "1.8.0",
-  "org.scaldi"        %% "scaldi"                      % "0.5.7",
-  "com.pauldijou"     %% "jwt-core"                    % "0.8.0",
-  "com.typesafe.akka" %% "akka-http-testkit"           % "2.4.8" % "test",
-  "org.scalatest"     %% "scalatest"                   % "2.2.6" % "test",
-  "org.scalamock"     %% "scalamock-scalatest-support" % "3.2.2" % "test"
+  "com.typesafe.akka"      %% "akka-http-experimental"      % "2.4.9",
+  "com.typesafe.akka"      %% "akka-stream"                 % "2.4.9",
+  "io.circe"               %% "circe-generic"               % "0.4.1",
+  "io.circe"               %% "circe-parser"                % "0.4.1",
+  "de.heikoseeberger"      %% "akka-http-circe"             % "1.8.0",
+  "org.scaldi"             %% "scaldi"                      % "0.5.7",
+  "com.pauldijou"          %% "jwt-core"                    % "0.8.0",
+  "org.scala-lang.modules" %% "scala-xml"                   % "1.0.4",
+  "com.typesafe.akka"      %% "akka-http-testkit"           % "2.4.9" % "test",
+  "org.scalatest"          %% "scalatest"                   % "2.2.6" % "test",
+  "org.scalamock"          %% "scalamock-scalatest-support" % "3.2.2" % "test"
 )
 
 test in assembly := {}

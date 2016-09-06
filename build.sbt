@@ -37,3 +37,5 @@ libraryDependencies ++= Seq(
 test in assembly := {}
 
 mainClass in assembly := Some("jp.co.dzl.example.akka.api")
+
+fork in Test := true

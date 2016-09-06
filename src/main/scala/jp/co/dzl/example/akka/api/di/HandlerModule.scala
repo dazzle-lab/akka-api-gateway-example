@@ -1,9 +1,9 @@
-package jp.co.dzl.example.akka.api.modules
+package jp.co.dzl.example.akka.api.di
 
 import akka.actor.ActorSystem
 import akka.stream.Materializer
-import jp.co.dzl.example.akka.api.handlers.Handler
-import jp.co.dzl.example.akka.api.handlers.v1.github.UsersHandler
+import jp.co.dzl.example.akka.api.handler.Handler
+import jp.co.dzl.example.akka.api.handler.v1.github.UsersHandler
 import scaldi.Module
 
 import scala.concurrent.ExecutionContextExecutor

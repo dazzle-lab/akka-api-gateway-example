@@ -1,11 +1,11 @@
-package jp.co.dzl.example.akka.api.handlers
+package jp.co.dzl.example.akka.api.handler
 
 import akka.event.Logging
 import io.circe.generic.auto._
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.server.Directives._
 import de.heikoseeberger.akkahttpcirce.CirceSupport
-import jp.co.dzl.example.akka.api.responses.MessageResponse
+import jp.co.dzl.example.akka.api.response.MessageResponse
 
 trait MainHandler extends Handler with CirceSupport {
   val host: String

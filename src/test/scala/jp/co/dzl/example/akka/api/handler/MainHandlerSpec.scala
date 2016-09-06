@@ -1,4 +1,4 @@
-package jp.co.dzl.example.akka.api.handlers
+package jp.co.dzl.example.akka.api.handler
 
 import akka.event.LoggingAdapter
 import akka.http.scaladsl.model.StatusCodes._
@@ -6,7 +6,7 @@ import akka.http.scaladsl.model.ContentTypes._
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import io.circe.generic.auto._
 import jp.co.dzl.example.akka.api.AkkaSupport
-import jp.co.dzl.example.akka.api.responses.MessageResponse
+import jp.co.dzl.example.akka.api.response.MessageResponse
 import org.scalamock.scalatest.MockFactory
 import org.scalatest.{ Matchers, FlatSpec }
 

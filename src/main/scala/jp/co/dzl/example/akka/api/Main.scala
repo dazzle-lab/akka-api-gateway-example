@@ -2,8 +2,8 @@ package jp.co.dzl.example.akka.api
 
 import akka.actor.ActorSystem
 import akka.stream.Materializer
-import jp.co.dzl.example.akka.api.handlers.{ MainHandler, Handler }
-import jp.co.dzl.example.akka.api.modules.{ ConfigModule, HandlerModule, AkkaModule }
+import jp.co.dzl.example.akka.api.handler.{ MainHandler, Handler }
+import jp.co.dzl.example.akka.api.di.{ ConfigModule, HandlerModule, AkkaModule }
 import scaldi.{ Injector, Injectable }
 
 import scala.concurrent.ExecutionContextExecutor

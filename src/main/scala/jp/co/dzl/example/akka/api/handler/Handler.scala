@@ -1,4 +1,4 @@
-package jp.co.dzl.example.akka.api.handlers
+package jp.co.dzl.example.akka.api.handler
 
 import akka.actor.ActorSystem
 import akka.http.scaladsl.server.Route

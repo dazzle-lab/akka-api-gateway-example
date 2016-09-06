@@ -1,4 +1,4 @@
-package jp.co.dzl.example.akka.api.modules
+package jp.co.dzl.example.akka.api.di
 
 import akka.actor.ActorSystem
 import akka.stream.{ ActorMaterializer, Materializer }

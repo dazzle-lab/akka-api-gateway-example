@@ -1,11 +1,11 @@
-package jp.co.dzl.example.akka.api.handlers.v1.github
+package jp.co.dzl.example.akka.api.handler.v1.github
 
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model._
 import akka.http.scaladsl.model.headers.RawHeader
 import akka.http.scaladsl.server.Directives._
 import akka.stream.scaladsl.{ Sink, Source }
-import jp.co.dzl.example.akka.api.handlers.Handler
+import jp.co.dzl.example.akka.api.handler.Handler
 
 import scala.concurrent.Future
 import scala.concurrent.duration._

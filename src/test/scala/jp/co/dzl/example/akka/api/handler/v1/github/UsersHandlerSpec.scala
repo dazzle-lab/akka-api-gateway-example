@@ -1,4 +1,4 @@
-package jp.co.dzl.example.akka.api.handlers.v1.github
+package jp.co.dzl.example.akka.api.handler.v1.github
 
 import akka.http.scaladsl.model.{ HttpResponse, HttpRequest }
 import akka.http.scaladsl.model.StatusCodes._

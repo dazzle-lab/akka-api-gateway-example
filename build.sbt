@@ -28,9 +28,10 @@ libraryDependencies ++= Seq(
   "org.scaldi"             %% "scaldi"                      % "0.5.7",
   "com.pauldijou"          %% "jwt-core"                    % "0.8.0",
   "org.scala-lang.modules" %% "scala-xml"                   % "1.0.4",
-  "com.typesafe.akka"      %% "akka-http-testkit"           % "2.4.9" % "test",
-  "org.scalatest"          %% "scalatest"                   % "2.2.6" % "test",
-  "org.scalamock"          %% "scalamock-scalatest-support" % "3.2.2" % "test"
+  "com.typesafe.akka"      %% "akka-http-testkit"           % "2.4.9"  % "test",
+  "com.typesafe.akka"      %% "akka-stream-testkit"         % "2.4.9"  % "test",
+  "org.scalatest"          %% "scalatest"                   % "2.2.6"  % "test",
+  "org.scalamock"          %% "scalamock-scalatest-support" % "3.2.2"  % "test"
 )
 
 test in assembly := {}

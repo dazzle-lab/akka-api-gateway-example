@@ -1,44 +1,36 @@
 package jp.co.dzl.example.akka.api.handler.v1.github
 
-import akka.http.scaladsl.Http
+import akka.actor.ActorSystem
 import akka.http.scaladsl.model._
-import akka.http.scaladsl.model.headers.RawHeader
 import akka.http.scaladsl.server.Directives._
+import akka.stream.ActorMaterializer
 import akka.stream.scaladsl.{ Sink, Source }
 import jp.co.dzl.example.akka.api.handler.Handler
+import jp.co.dzl.example.akka.api.service.GitHub
 
-import scala.concurrent.Future
-import scala.concurrent.duration._
+import scala.util.{ Failure, Success }
 
-trait UsersHandler extends Handler {
-  val host: String
-  val port: Int
-  val timeout: Int
+class UsersHandler(
+    actorSystem: ActorSystem,
+    github:      GitHub
+) extends Handler {
+  implicit val system = actorSystem
+  implicit val executor = system.dispatcher
+  implicit val materializer = ActorMaterializer()
 
-  def github(request: HttpRequest): Future[HttpResponse] = {
-    val connection = Http().outgoingConnectionHttps(host, port).idleTimeout(timeout.seconds)
-    Source.single(request).via(connection).runWith(Sink.head)
-  }
+  def routes = pathPrefix("v1" / "github") {
+    path("users" / """^[a-zA-Z0-9\-]+$""".r) { login =>
+      get {
+        extractRequest { req =>
+          val result = Source.single(HttpRequest(HttpMethods.GET, s"/users/$login"))
+            .via(github.from(req))
+            .via(github.send)
+            .runWith(Sink.head)
 
-  def modifyHeaders(request: HttpRequest) = {
-    val host = request.headers.find(_.is("host")).map(_.value())
-
-    request
-      .addHeader(RawHeader("X-Forwarded-Host", host.getOrElse(s"$host:$port")))
-      .headers
-      .filterNot(_.lowercaseName() == "host")
-      .filterNot(_.lowercaseName() == "timeout-access")
-  }
-
-  override def routes = pathPrefix("v1") {
-    pathPrefix("github") {
-      path("users" / """^[a-zA-Z0-9\-]+$""".r) { login =>
-        get { context =>
-          val request = HttpRequest(HttpMethods.GET, s"/users/$login").withHeaders(modifyHeaders(context.request))
-
-          github(request)
-            .flatMap(context.complete(_))
-            .fallbackTo(context.complete(StatusCodes.ServiceUnavailable))
+          onComplete(result) {
+            case Success(response) => complete(response)
+            case Failure(error)    => complete(StatusCodes.ServiceUnavailable -> error.toString)
+          }
         }
       }
     }
